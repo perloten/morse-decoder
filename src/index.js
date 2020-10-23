@@ -35,10 +35,18 @@ const MORSE_TABLE = {
     '---..':  '8',
     '----.':  '9',
     '-----':  '0',
+    '**********': " "
 };
 
 function decode(expr) {
-    // write your solution here
+    var result = [];
+    var splitLine = expr.match(/.{10}/g);
+    for (val of splitLine) {
+    var toMorse = val.replace(/10/g, '.').replace(/11/g, '-').replace(/00/g, '');
+    result.push(toMorse);
+  
+    }
+    return result.map( b => MORSE_TABLE[b]).join('');
 }
 
 module.exports = {
